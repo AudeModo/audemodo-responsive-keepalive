@@ -1,0 +1,13 @@
+{
+  "name": "@audemodo/responsive-keepalive",
+  "version": "0.0.0",
+  "description": "Render genuinely different component trees per breakpoint without losing state.",
+  "license": "MIT",
+  "author": {
+    "name": "vi-wolhwa",
+    "email": "cerezo00@naver.com",
+    "url": "https://github.com/AudeModo/audemodo-responsive-keepalive.git"
+  },
+  "type": "module",
+  "sideEffects": false
+}
