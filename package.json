@@ -68,5 +68,8 @@
       }
     },
     "./package.json": "./package.json"
+  },
+  "dependencies": {
+    "@testing-library/react": "^16.3.2"
   }
 }
