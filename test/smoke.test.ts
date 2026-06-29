@@ -1,7 +1,7 @@
-import { describe, expect, it } from "vitest";
+import { describe, expect, it } from 'vitest';
 
-describe("toolchain smoke", () => {
-  it("runs the test runner", () => {
+describe('toolchain smoke', () => {
+  it('runs the test runner', () => {
     expect(1 + 1).toBe(2);
   });
 });
