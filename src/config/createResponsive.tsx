@@ -13,7 +13,7 @@ import type {
   ResponsiveProviderProps,
   VariantMap,
 } from '../types';
-import { breakpointsToQueries } from './breakpointsToQueries';
+import { breakpointsToQueries } from '../query/breakpointsToQueries';
 
 const ACTIVITY_GATE_WARNING =
   '[responsive-keepalive] <Activity> is unavailable;' +
