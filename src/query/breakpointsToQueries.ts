@@ -3,12 +3,12 @@ export function breakpointsToQueries<K extends string>(
 ): Record<K, string> {
   const entries = Object.entries(breakpoints) as [K, number][];
   if (entries.length === 0) {
-    throw new Error('[responsive-keepalive] createResponsive: breakpoints must not be empty.');
+    throw new Error('[responsive-keepalive] breakpoints must not be empty.');
   }
   for (const [key, value] of entries) {
     if (!Number.isInteger(value) || value < 0) {
       throw new Error(
-        `[responsive-keepalive] createResponsive: breakpoint "${key}" must be a non-negative integer of pixels, received ${String(value)}.`,
+        `[responsive-keepalive] breakpoint "${key}" must be a non-negative integer of pixels, received ${String(value)}.`,
       );
     }
   }

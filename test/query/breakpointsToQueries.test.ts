@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { breakpointsToQueries } from '../../src/config/breakpointsToQueries';
+import { breakpointsToQueries } from '../../src/query/breakpointsToQueries';
 
 describe('breakpointsToQueries (pure, integer-only)', () => {
   it('derives non-overlapping mobile-first bands from integer thresholds', () => {
