@@ -22,7 +22,6 @@ export function KeepAliveVariants<K extends string>({
   return (
     <>
       {mountedKeys.map((key) => (
-        // 안정적인 key → 안정적인 트리 위치 → 전환에도 상태 보존
         <Activity key={key} mode={key === variant ? 'visible' : 'hidden'}>
           {renderVariant(variants[key])}
         </Activity>

@@ -48,7 +48,7 @@ describe('Responsive — variant value forms', () => {
         <Responsive
           variant={variant}
           variants={{
-            mobile: <LocalVariant tid="m" />, // element form, not () => <LocalVariant/>
+            mobile: <LocalVariant tid="m" />,
             desktop: <LocalVariant tid="d" />,
           }}
         />
@@ -58,7 +58,7 @@ describe('Responsive — variant value forms', () => {
     typeInto('d-input', 'kept');
 
     rerender(<Fixture variant="mobile" />);
-    expect(valOf('d-input')).toBe('kept'); // preserved across the switch
+    expect(valOf('d-input')).toBe('kept');
 
     rerender(<Fixture variant="desktop" />);
     expect(valOf('d-input')).toBe('kept');
@@ -86,25 +86,25 @@ describe('Responsive — keepAlive (default)', () => {
 
   it('preserves per-side local state across a round trip (same instance)', () => {
     const { rerender } = render(<Fixture variant="desktop" />);
-    typeInto('d-input', '로컬 상태');
+    typeInto('d-input', 'local state');
     const id0 = iidOf('d-iid');
 
     rerender(<Fixture variant="mobile" />);
-    expect(valOf('d-input')).toBe('로컬 상태');
+    expect(valOf('d-input')).toBe('local state');
     expect(screen.queryByTestId('m-input')).not.toBeNull();
 
     rerender(<Fixture variant="desktop" />);
-    expect(valOf('d-input')).toBe('로컬 상태');
+    expect(valOf('d-input')).toBe('local state');
     expect(iidOf('d-iid')).toBe(id0);
   });
 
   it('keeps an activated variant alive after switching away', () => {
     const { rerender } = render(<Fixture variant="desktop" />);
     rerender(<Fixture variant="mobile" />);
-    typeInto('m-input', '모바일 입력');
+    typeInto('m-input', 'mobile input');
     rerender(<Fixture variant="desktop" />);
     expect(screen.queryByTestId('m-input')).not.toBeNull();
-    expect(valOf('m-input')).toBe('모바일 입력');
+    expect(valOf('m-input')).toBe('mobile input');
   });
 });
 
@@ -129,11 +129,11 @@ describe('Responsive — lifted shared state composes', () => {
 
   it('shares text across variants and preserves it', () => {
     render(<SharedFixture />);
-    typeInto('d-input', '공유 + 보존');
+    typeInto('d-input', 'share + preserve');
     fireEvent.click(screen.getByTestId('go-mobile'));
-    expect(valOf('m-input')).toBe('공유 + 보존');
+    expect(valOf('m-input')).toBe('share + preserve');
     fireEvent.click(screen.getByTestId('go-desktop'));
-    expect(valOf('d-input')).toBe('공유 + 보존');
+    expect(valOf('d-input')).toBe('share + preserve');
   });
 });
 
@@ -153,7 +153,7 @@ describe('Responsive — strategy="swap"', () => {
 
   it('unmounts and loses state on switch (opt-in baseline)', () => {
     const { rerender } = render(<SwapFixture variant="desktop" />);
-    typeInto('d-input', '사라질 값');
+    typeInto('d-input', 'lost value');
     const id0 = iidOf('d-iid');
     rerender(<SwapFixture variant="mobile" />);
     expect(screen.queryByTestId('d-input')).toBeNull();
