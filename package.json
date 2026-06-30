@@ -18,6 +18,8 @@
     "build": "tsup",
     "dev": "tsup --watch",
     "prepublishOnly": "npm run build",
+    "sample": "vite --config sample/vite.config.ts",
+    "sample:build": "vite build --config sample/vite.config.ts",
     "test": "vitest run",
     "test:watch": "vitest",
     "typecheck": "tsc --noEmit",
