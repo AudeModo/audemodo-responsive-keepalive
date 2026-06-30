@@ -30,6 +30,12 @@ export function createResponsive<const K extends string>(
   }
   const queries = breakpointsToQueries(breakpoints);
 
+  const resolveOptions = (options: CreateResponsiveOptions<K>, ssrOverride: K | undefined) => ({
+    ssr: options.ssr ?? ssrOverride ?? defaults.ssr,
+    settleMs: options.settleMs ?? defaults.settleMs,
+    deferWhileComposing: options.deferWhileComposing ?? defaults.deferWhileComposing,
+  });
+
   const SsrContext = createContext<K | undefined>(undefined);
 
   function Provider({ children, ssr }: ResponsiveProviderProps<K>): ReactElement {
@@ -42,22 +48,15 @@ export function createResponsive<const K extends string>(
   Provider.displayName = 'ResponsiveProvider';
 
   const useVariant = (options: CreateResponsiveOptions<K> = {}): K => {
-    const ssrOverride = useContext(SsrContext);
-    return useMediaVariant(queries, {
-      ssr: options.ssr ?? ssrOverride ?? defaults.ssr,
-      settleMs: options.settleMs ?? defaults.settleMs,
-      deferWhileComposing: options.deferWhileComposing ?? defaults.deferWhileComposing,
-    });
+    return useMediaVariant(queries, resolveOptions(options, useContext(SsrContext)));
   };
 
   function Responsive(props: ConfiguredResponsiveProps<K>): ReactElement {
     const { strategy, mount, ssr, settleMs, deferWhileComposing, ...variants } = props;
-    const ssrOverride = useContext(SsrContext);
-    const variant = useMediaVariant(queries, {
-      ssr: ssr ?? ssrOverride ?? defaults.ssr,
-      settleMs: settleMs ?? defaults.settleMs,
-      deferWhileComposing: deferWhileComposing ?? defaults.deferWhileComposing,
-    });
+    const variant = useMediaVariant(
+      queries,
+      resolveOptions({ ssr, settleMs, deferWhileComposing }, useContext(SsrContext)),
+    );
     return (
       <ControlledResponsive
         variant={variant}
@@ -94,10 +93,10 @@ export function createResponsive<const K extends string>(
     values: Record<K, V>,
     options: Omit<CreateResponsiveOptions<K>, 'deferWhileComposing'> = {},
   ): V => {
-    const ssrOverride = useContext(SsrContext);
+    const resolved = resolveOptions(options, useContext(SsrContext));
     return baseUseResponsiveValue(queries, values, {
-      ssr: options.ssr ?? ssrOverride ?? defaults.ssr,
-      settleMs: options.settleMs ?? defaults.settleMs,
+      ssr: resolved.ssr,
+      settleMs: resolved.settleMs,
     });
   };
 
