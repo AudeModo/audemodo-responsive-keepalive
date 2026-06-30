@@ -1,5 +1,6 @@
 import { afterEach, describe, expect, it, vi } from 'vitest';
 import { cleanup, fireEvent, render, screen } from '@testing-library/react';
+import { Responsive } from '../../src/responsive/Responsive';
 import { SharedStateScope } from '../../src/shared/SharedStateScope';
 import { useSharedState } from '../../src/shared/useSharedState';
 
@@ -73,5 +74,31 @@ describe('useSharedState', () => {
     const spy = vi.spyOn(console, 'error').mockImplementation(() => {});
     expect(() => render(<Writer tid="x" />)).toThrow(/SharedStateScope|Responsive/);
     spy.mockRestore();
+  });
+
+  it('persists shared state across strategy="swap" (store lives in the scope)', () => {
+    const variants = {
+      d: () => <Writer tid="d" k="s" init="" />,
+      m: () => <Writer tid="m" k="s" init="" />,
+    };
+    const { rerender } = render(<Responsive variant="d" variants={variants} strategy="swap" />);
+    fireEvent.click(screen.getByTestId('d-set'));
+    expect(text('d-v')).toBe('next');
+    rerender(<Responsive variant="m" variants={variants} strategy="swap" />);
+    expect(text('m-v')).toBe('next');
+  });
+
+  it('auto-provides a scope inside <Responsive> (no explicit provider)', () => {
+    const variants = {
+      d: () => <Writer tid="d" k="s2" init="x" />,
+      m: () => <Writer tid="m" k="s2" init="x" />,
+    };
+    const { rerender } = render(
+      <Responsive variant="d" variants={variants} strategy="keepAlive" />,
+    );
+    fireEvent.click(screen.getByTestId('d-set'));
+    expect(text('d-v')).toBe('next');
+    rerender(<Responsive variant="m" variants={variants} strategy="keepAlive" />);
+    expect(text('m-v')).toBe('next');
   });
 });

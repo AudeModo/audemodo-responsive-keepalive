@@ -2,6 +2,7 @@ import type { ReactNode } from 'react';
 import { isActivitySupported } from '../platform/activity';
 import { warnOnce } from '../internal/warnOnce';
 import type { ResponsiveProps } from '../types';
+import { SharedStateScope } from '../shared/SharedStateScope';
 import { KeepAliveVariants } from './KeepAliveVariants';
 import { SwapVariant } from './SwapVariant';
 
@@ -21,9 +22,13 @@ export function Responsive<K extends string>({
     warnOnce(ACTIVITY_FALLBACK_WARNING);
   }
 
-  return keepAlive ? (
-    <KeepAliveVariants variant={variant} variants={variants} mount={mount} />
-  ) : (
-    <SwapVariant variant={variant} variants={variants} />
+  return (
+    <SharedStateScope>
+      {keepAlive ? (
+        <KeepAliveVariants variant={variant} variants={variants} mount={mount} />
+      ) : (
+        <SwapVariant variant={variant} variants={variants} />
+      )}
+    </SharedStateScope>
   );
 }
