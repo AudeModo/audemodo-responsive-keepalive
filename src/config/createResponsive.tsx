@@ -17,6 +17,8 @@ import { breakpointsToQueries } from './breakpointsToQueries';
 
 const RESERVED = ['strategy', 'mount', 'ssr', 'settleMs', 'deferWhileComposing'];
 
+const toGateName = (key: string): string => key.charAt(0).toUpperCase() + key.slice(1);
+
 export function createResponsive<const K extends string>(
   breakpoints: Record<K, number>,
   defaults: CreateResponsiveOptions<NoInfer<K>> = {},
@@ -86,8 +88,8 @@ export function createResponsive<const K extends string>(
   };
 
   const Match = Object.fromEntries(
-    (Object.keys(queries) as K[]).map((key) => [key, makeGate(key)]),
-  ) as unknown as { [P in K]: (props: MatchProps) => ReactElement };
+    (Object.keys(queries) as K[]).map((key) => [toGateName(key), makeGate(key)]),
+  ) as unknown as { [P in K as Capitalize<P>]: (props: MatchProps) => ReactElement };
 
   const useResponsiveValue = <V,>(
     values: Record<K, V>,
