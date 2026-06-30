@@ -1,3 +1,4 @@
+export { createResponsive } from './config/createResponsive';
 export { useContainerVariant } from './container/useContainerVariant';
 export { useMediaVariant } from './media/useMediaVariant';
 export { useResponsiveValue } from './media/useResponsiveValue';
@@ -12,4 +13,10 @@ export type {
   MediaVariantOptions,
   ResponsiveValueOptions,
   ContainerVariantOptions,
+  BreakpointConfig,
+  CreateResponsiveOptions,
+  ConfiguredResponsiveProps,
+  ConfiguredResponsive,
+  ResponsiveProviderProps,
+  MatchProps,
 } from './types';
