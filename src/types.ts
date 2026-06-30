@@ -16,3 +16,10 @@ export interface VariantRenderProps<K extends string> {
   variant: K;
   variants: VariantMap<K>;
 }
+
+export interface MediaVariantOptions<K extends string> {
+  ssr?: K;
+}
+export interface ResponsiveValueOptions<K extends string> {
+  ssr?: K;
+}
