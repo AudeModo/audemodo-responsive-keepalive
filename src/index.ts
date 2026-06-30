@@ -14,6 +14,7 @@ export type {
   ResponsiveValueOptions,
   ContainerVariantOptions,
   BreakpointConfig,
+  MediaInput,
   CreateResponsiveOptions,
   ConfiguredResponsiveProps,
   ConfiguredResponsive,

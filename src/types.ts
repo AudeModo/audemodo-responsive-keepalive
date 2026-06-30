@@ -73,3 +73,5 @@ export interface MatchProps {
   children: ReactNode;
   keepAlive?: boolean;
 }
+
+export type MediaInput<K extends string> = Record<K, number> | Record<K, string>;
