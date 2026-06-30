@@ -11,7 +11,7 @@ export function useSharedState<T>(key: string, initialValue: T): [T, SetSharedSt
     );
   }
 
-  const initialRef = useRef(initialValue); // 렌더 간 안정적인 initial
+  const initialRef = useRef(initialValue);
 
   const subscribe = useCallback(
     (onChange: () => void) => store.subscribe(key, onChange),

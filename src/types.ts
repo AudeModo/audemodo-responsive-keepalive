@@ -32,3 +32,5 @@ export interface ContainerVariantOptions<K extends string> {
   ssr?: K;
   settleMs?: number;
 }
+
+export type BreakpointConfig<K extends string> = Record<K, string> | Record<K, number>;
