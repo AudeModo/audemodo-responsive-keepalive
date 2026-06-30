@@ -22,6 +22,10 @@ describe('breakpointsToQueries (pure, integer-only)', () => {
     expect(q.large).toBe('(min-width: 960px)');
   });
 
+  it('returns an always-matching query for a single floor-0 breakpoint', () => {
+    expect(breakpointsToQueries({ only: 0 })).toEqual({ only: '(min-width: 0px)' });
+  });
+
   it('throws on an empty config', () => {
     expect(() => breakpointsToQueries({} as Record<string, number>)).toThrow();
   });

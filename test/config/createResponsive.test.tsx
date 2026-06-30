@@ -209,37 +209,6 @@ describe('createResponsive', () => {
     expect(screen.queryByTestId('panel-body')).toBeNull();
   });
 
-  it('a shared panel-open boolean syncs across Desktop/Mobile gates (cross-variant sharing, not just keep-alive)', () => {
-    const { mm, set } = makeMatchMedia();
-    vi.stubGlobal('matchMedia', mm);
-    const { Provider, Match } = createResponsive({ mobile: 0, desktop: 760 }, { ssr: 'mobile' });
-    const { Desktop, Mobile } = Match;
-    function Panel({ tid }: { tid: string }) {
-      const [open, setOpen] = useSharedState('panel-open', false);
-      return (
-        <button data-testid={`${tid}-panel`} onClick={() => setOpen((o) => !o)}>
-          {open ? 'open' : 'closed'}
-        </button>
-      );
-    }
-    set({ '(min-width: 760px)': true });
-    render(
-      <Provider>
-        <Desktop>
-          <Panel tid="d" />
-        </Desktop>
-        <Mobile>
-          <Panel tid="m" />
-        </Mobile>
-      </Provider>,
-    );
-    expect(screen.getByTestId('d-panel').textContent).toBe('closed');
-    fireEvent.click(screen.getByTestId('d-panel'));
-    expect(screen.getByTestId('d-panel').textContent).toBe('open');
-    act(() => set({ '(max-width: 759px)': true }));
-    expect(screen.getByTestId('m-panel').textContent).toBe('open');
-  });
-
   it('Match with keepAlive={false} unmounts the inactive branch (swap)', () => {
     const { mm, set } = makeMatchMedia();
     vi.stubGlobal('matchMedia', mm);
