@@ -1,20 +1,19 @@
 export function breakpointsToQueries<K extends string>(
-  config: Record<K, string | number>,
+  breakpoints: Record<K, number>,
 ): Record<K, string> {
-  const entries = Object.entries(config) as [K, string | number][];
-  const numeric = entries.filter((e): e is [K, number] => typeof e[1] === 'number');
-  const textual = entries.filter((e): e is [K, string] => typeof e[1] === 'string');
-
-  if (numeric.length > 0 && textual.length > 0) {
-    throw new Error(
-      '[responsive-keepalive] createResponsive: breakpoints must be all media-query strings or all numbers, not a mix.',
-    );
+  const entries = Object.entries(breakpoints) as [K, number][];
+  if (entries.length === 0) {
+    throw new Error('[responsive-keepalive] createResponsive: breakpoints must not be empty.');
   }
-  if (numeric.length === 0) {
-    return Object.fromEntries(textual) as Record<K, string>;
+  for (const [key, value] of entries) {
+    if (!Number.isInteger(value) || value < 0) {
+      throw new Error(
+        `[responsive-keepalive] createResponsive: breakpoint "${key}" must be a non-negative integer of pixels, received ${String(value)}.`,
+      );
+    }
   }
 
-  const sorted = numeric.slice().sort((a, b) => a[1] - b[1]);
+  const sorted = entries.slice().sort((a, b) => a[1] - b[1]);
   const result = {} as Record<K, string>;
   sorted.forEach(([key, min], i) => {
     const next = sorted[i + 1];
