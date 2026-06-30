@@ -27,3 +27,8 @@ export interface ResponsiveValueOptions<K extends string> {
   ssr?: K;
   settleMs?: number;
 }
+
+export interface ContainerVariantOptions<K extends string> {
+  ssr?: K;
+  settleMs?: number;
+}
