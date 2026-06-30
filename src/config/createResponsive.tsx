@@ -15,6 +15,11 @@ import type {
 } from '../types';
 import { breakpointsToQueries } from './breakpointsToQueries';
 
+const ACTIVITY_GATE_WARNING =
+  '[responsive-keepalive] <Activity> is unavailable;' +
+  'Match gates fall back to swap (inactive branches unmount and lose state).' +
+  'Upgrade to React 19.2+ for keep-alive.';
+
 const RESERVED = ['strategy', 'mount', 'ssr', 'settleMs', 'deferWhileComposing'];
 
 const toGateName = (key: string): string => key.charAt(0).toUpperCase() + key.slice(1);
@@ -77,9 +82,7 @@ export function createResponsive<const K extends string>(
         if (isActivitySupported()) {
           return <Activity mode={active ? 'visible' : 'hidden'}>{children}</Activity>;
         }
-        warnOnce(
-          '[responsive-keepalive] <Activity> is unavailable; Match gates fall back to swap (inactive branches unmount and lose state). Upgrade to React 19.2+ for keep-alive.',
-        );
+        warnOnce(ACTIVITY_GATE_WARNING);
       }
       return <>{active ? children : null}</>;
     }
