@@ -18,7 +18,7 @@ import { breakpointsToQueries } from './breakpointsToQueries';
 const RESERVED = ['strategy', 'mount', 'ssr', 'settleMs', 'deferWhileComposing'];
 
 export function createResponsive<const K extends string>(
-  breakpoints: Record<K, string | number>,
+  breakpoints: Record<K, number>,
   defaults: CreateResponsiveOptions<NoInfer<K>> = {},
 ): ConfiguredResponsive<K> {
   for (const key of Object.keys(breakpoints)) {

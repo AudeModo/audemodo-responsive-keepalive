@@ -82,21 +82,6 @@ describe('createResponsive', () => {
     expect(screen.getByTestId('v').textContent).toBe('3');
   });
 
-  it('works with explicit media-query (string) config', () => {
-    const { mm, set } = makeMatchMedia();
-    vi.stubGlobal('matchMedia', mm);
-    const { useVariant } = createResponsive(
-      { desktop: '(min-width: 700px)', mobile: '(max-width: 699px)' },
-      { ssr: 'desktop' },
-    );
-    function Probe() {
-      return <span data-testid="v">{useVariant()}</span>;
-    }
-    set({ '(max-width: 699px)': true });
-    render(<Probe />);
-    expect(screen.getByTestId('v').textContent).toBe('mobile');
-  });
-
   it('throws if a breakpoint key collides with a reserved prop', () => {
     expect(() => createResponsive({ strategy: 0, mobile: 1 } as never)).toThrow();
   });

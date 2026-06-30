@@ -33,7 +33,7 @@ export interface ContainerVariantOptions<K extends string> {
   settleMs?: number;
 }
 
-export type BreakpointConfig<K extends string> = Record<K, string> | Record<K, number>;
+export type BreakpointConfig<K extends string> = Record<K, number>;
 
 export interface CreateResponsiveOptions<K extends string> {
   ssr?: K;
