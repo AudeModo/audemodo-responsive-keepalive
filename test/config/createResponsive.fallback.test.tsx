@@ -24,7 +24,7 @@ describe('createResponsive — Match gates without Activity (DIP fallback)', () 
     vi.stubGlobal('matchMedia', mm);
     const { Match } = createResponsive({ mobile: 0, desktop: 760 }, { ssr: 'mobile' });
     const { desktop: Desktop, mobile: Mobile } = Match;
-    set({ '(min-width: 760px)': true }); // desktop active
+    set({ '(min-width: 760px)': true });
     render(
       <>
         <Desktop>
@@ -36,7 +36,7 @@ describe('createResponsive — Match gates without Activity (DIP fallback)', () 
       </>,
     );
     expect(screen.queryByTestId('d')).toBeTruthy();
-    expect(screen.queryByTestId('m')).toBeNull(); // swap: 비활성 미마운트
-    expect(warn).toHaveBeenCalledTimes(1); // warnOnce가 두 게이트에서 1회로 dedupe
+    expect(screen.queryByTestId('m')).toBeNull();
+    expect(warn).toHaveBeenCalledTimes(1);
   });
 });
