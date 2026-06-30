@@ -90,7 +90,7 @@ describe('createResponsive', () => {
     const { mm, set } = makeMatchMedia();
     vi.stubGlobal('matchMedia', mm);
     const { Match } = createResponsive({ mobile: 0, desktop: 760 }, { ssr: 'mobile' });
-    const { desktop: Desktop, mobile: Mobile } = Match;
+    const { Desktop, Mobile } = Match;
     set({ '(min-width: 760px)': true });
     render(
       <>
@@ -110,7 +110,7 @@ describe('createResponsive', () => {
     const { mm, set } = makeMatchMedia();
     vi.stubGlobal('matchMedia', mm);
     const { Match } = createResponsive({ mobile: 0, desktop: 760 }, { ssr: 'mobile' });
-    const { desktop: Desktop, mobile: Mobile } = Match;
+    const { Desktop, Mobile } = Match;
 
     function Popup() {
       const [text, setText] = useState('');
@@ -176,7 +176,7 @@ describe('createResponsive', () => {
     const { mm, set } = makeMatchMedia();
     vi.stubGlobal('matchMedia', mm);
     const { Match } = createResponsive({ mobile: 0, desktop: 760 }, { ssr: 'mobile' });
-    const { desktop: Desktop, mobile: Mobile } = Match;
+    const { Desktop, Mobile } = Match;
     function FilterPanel() {
       const [open, setOpen] = useState(false);
       return (
@@ -212,7 +212,7 @@ describe('createResponsive', () => {
     const { mm, set } = makeMatchMedia();
     vi.stubGlobal('matchMedia', mm);
     const { Provider, Match } = createResponsive({ mobile: 0, desktop: 760 }, { ssr: 'mobile' });
-    const { desktop: Desktop, mobile: Mobile } = Match;
+    const { Desktop, Mobile } = Match;
     function Panel({ tid }: { tid: string }) {
       const [open, setOpen] = useSharedState('panel-open', false);
       return (
@@ -243,7 +243,7 @@ describe('createResponsive', () => {
     const { mm, set } = makeMatchMedia();
     vi.stubGlobal('matchMedia', mm);
     const { Match } = createResponsive({ mobile: 0, desktop: 760 }, { ssr: 'mobile' });
-    const { desktop: Desktop, mobile: Mobile } = Match;
+    const { Desktop, Mobile } = Match;
     set({ '(min-width: 760px)': true });
     render(
       <>
@@ -263,7 +263,7 @@ describe('createResponsive', () => {
     const { mm, set } = makeMatchMedia();
     vi.stubGlobal('matchMedia', mm);
     const { Provider, Match } = createResponsive({ mobile: 0, desktop: 760 }, { ssr: 'mobile' });
-    const { desktop: Desktop, mobile: Mobile } = Match;
+    const { Desktop, Mobile } = Match;
     function Field({ tid }: { tid: string }) {
       const [v, setV] = useSharedState('q', '');
       return (
@@ -321,5 +321,5 @@ void _missing;
 void _extra;
 void _ok;
 // @ts-expect-error 'tablet' is not a configured Match gate
-void typed.Match.tablet;
-void typed.Match.desktop;
+void typed.Match.Tablet;
+void typed.Match.Desktop;

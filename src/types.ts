@@ -54,7 +54,8 @@ export type ConfiguredResponsiveProps<K extends string> = {
 export interface ConfiguredResponsive<K extends string> {
   Responsive: (props: ConfiguredResponsiveProps<K>) => ReactElement;
   Provider: (props: ResponsiveProviderProps<K>) => ReactElement;
-  Match: { [P in K]: (props: MatchProps) => ReactElement };
+  Match: { [P in K as Capitalize<P>]: (props: MatchProps) => ReactElement };
+
   useVariant: (options?: CreateResponsiveOptions<K>) => K;
   useResponsiveValue: <V>(
     values: Record<K, V>,

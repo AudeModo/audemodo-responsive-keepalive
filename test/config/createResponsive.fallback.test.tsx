@@ -23,7 +23,7 @@ describe('createResponsive — Match gates without Activity (DIP fallback)', () 
     const { mm, set } = makeMatchMedia();
     vi.stubGlobal('matchMedia', mm);
     const { Match } = createResponsive({ mobile: 0, desktop: 760 }, { ssr: 'mobile' });
-    const { desktop: Desktop, mobile: Mobile } = Match;
+    const { Desktop, Mobile } = Match;
     set({ '(min-width: 760px)': true });
     render(
       <>
