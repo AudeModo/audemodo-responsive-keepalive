@@ -35,3 +35,27 @@ export function makeMatchMedia(): MockMatchMedia {
   };
   return { mm, set };
 }
+
+const resizeCallbacks: ResizeObserverCallback[] = [];
+let resizeDisconnects = 0;
+export class MockResizeObserver {
+  constructor(callback: ResizeObserverCallback) {
+    resizeCallbacks.push(callback);
+  }
+  observe(): void {}
+  unobserve(): void {}
+  disconnect(): void {
+    resizeDisconnects += 1;
+  }
+}
+export function resizeDisconnectCount(): number {
+  return resizeDisconnects;
+}
+export function fireResize(width: number): void {
+  const entry = { contentRect: { width } } as ResizeObserverEntry;
+  for (const callback of resizeCallbacks) callback([entry], {} as ResizeObserver);
+}
+export function resetResizeObservers(): void {
+  resizeCallbacks.length = 0;
+  resizeDisconnects = 0;
+}
