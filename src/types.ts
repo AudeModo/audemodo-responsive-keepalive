@@ -19,7 +19,11 @@ export interface VariantRenderProps<K extends string> {
 
 export interface MediaVariantOptions<K extends string> {
   ssr?: K;
+  settleMs?: number;
+  deferWhileComposing?: boolean;
 }
+
 export interface ResponsiveValueOptions<K extends string> {
   ssr?: K;
+  settleMs?: number;
 }
