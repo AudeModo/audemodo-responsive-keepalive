@@ -1,3 +1,18 @@
+/**
+ * Pure: convert integer px min-width thresholds into a non-overlapping, mobile-first
+ * media-query map. Shared by `createResponsive` and the low-level media hooks.
+ *
+ * Breakpoints are **integers only** (pixel min-widths). Media-query strings are no
+ * longer accepted: they are rejected at compile time by the `number` type and at
+ * runtime by validation, because hand-written query strings are an easy source of
+ * human error (typos, wrong units, overlapping ranges). Authoring plain numbers and
+ * deriving the queries here keeps them correct and non-overlapping by construction.
+ *
+ * Entries are sorted ascending so the floor variant comes first (the natural default
+ * `ssr`). A floor of `0` yields a pure `max-width` band; the top band is an open
+ * `min-width`. A non-zero floor leaves a deliberate gap below it (widths under it
+ * match nothing and fall back to `ssr`).
+ */
 export function breakpointsToQueries<K extends string>(
   breakpoints: Record<K, number>,
 ): Record<K, string> {
