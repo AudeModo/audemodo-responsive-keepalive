@@ -1,12 +1,14 @@
 import { useHeldWhileComposing } from '../policies/useHeldWhileComposing';
 import { useSettledValue } from '../policies/useSettledValue';
-import type { MediaVariantOptions } from '../types';
+import { normalizeQueries } from '../query/normalizeQueries';
+import type { MediaInput, MediaVariantOptions } from '../types';
 import { useMatchedVariant } from './useMatchedVariant';
 
 export function useMediaVariant<K extends string>(
-  queries: Record<K, string>,
+  breakpoints: MediaInput<K>,
   options: MediaVariantOptions<NoInfer<K>> = {},
 ): K {
+  const queries = normalizeQueries(breakpoints);
   const keys = Object.keys(queries) as K[];
   const fallback = (options.ssr ?? keys[0]) as K;
   const raw = useMatchedVariant(queries, fallback);

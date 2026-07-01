@@ -52,4 +52,23 @@ describe('useResponsiveValue', () => {
     act(() => set({ '(min-width:601px)': true }));
     expect(cur()).toBe('3');
   });
+
+  it('accepts integer breakpoints', () => {
+    const { mm, set } = makeMatchMedia();
+    vi.stubGlobal('matchMedia', mm);
+    function Int() {
+      return (
+        <span data-testid="v">
+          {useResponsiveValue(
+            { mobile: 0, desktop: 768 },
+            { mobile: 1, desktop: 3 },
+            { ssr: 'mobile' },
+          )}
+        </span>
+      );
+    }
+    act(() => set({ '(min-width: 768px)': true }));
+    render(<Int />);
+    expect(cur()).toBe('3');
+  });
 });
