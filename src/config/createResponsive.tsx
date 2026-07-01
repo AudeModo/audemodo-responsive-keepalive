@@ -86,7 +86,7 @@ export function createResponsive<const K extends string>(
       }
       return <>{active ? children : null}</>;
     }
-    Gate.displayName = `Match.${key}`;
+    Gate.displayName = `Match.${toGateName(key)}`;
     return Gate;
   };
 
