@@ -15,6 +15,9 @@
     "ssr"
   ],
   "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  },
   "author": {
     "name": "vi-wolhwa",
     "email": "cerezo00@naver.com",
