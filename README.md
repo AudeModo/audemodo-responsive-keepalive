@@ -4,8 +4,8 @@
 Powered by React 19.2's `<Activity>`, with anti-thrash and IME-safe switching.
 
 [![npm version](https://img.shields.io/npm/v/@audemodo%2Fresponsive-keepalive.svg)](https://www.npmjs.com/package/@audemodo%2Fresponsive-keepalive)
-[![license](https://img.shields.io/npm/l/@audemodo%2Fresponsive-keepalive.svg)](./LICENSE)
-[![types included](https://img.shields.io/npm/types/@audemodo%2Fresponsive-keepalive.svg)](https://www.npmjs.com/package/@audemodo%2Fresponsive-keepalive)
+[![license](https://img.shields.io/badge/license-MIT-green.svg)](./LICENSE)
+[![types](https://img.shields.io/badge/types-TypeScript-blue.svg)](./dist/index.d.ts)
 
 When your mobile and desktop views are **different component trees**, switching between
 them at a breakpoint normally unmounts one and mounts the other — wiping scroll position,
