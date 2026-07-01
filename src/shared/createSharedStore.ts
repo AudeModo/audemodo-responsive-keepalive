@@ -1,3 +1,4 @@
+/** A keyed value store with per-key subscriptions. React-free and unit-testable. */
 export interface SharedStore {
   has(key: string): boolean;
   get(key: string): unknown;
