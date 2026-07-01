@@ -1,4 +1,5 @@
-import { createContext, useRef, type ReactNode } from 'react';
+import { createContext, type ReactNode, useRef } from 'react';
+
 import { createSharedStore, type SharedStore } from './createSharedStore';
 
 export const SharedStateContext = createContext<SharedStore | null>(null);

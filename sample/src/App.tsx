@@ -1,10 +1,11 @@
-import { useState, type ReactElement } from 'react';
+import { type ReactElement, useState } from 'react';
+
 import { setSimulatedWidth } from './lib/matchMedia';
-import { ControlledResponsive } from './patterns/ControlledResponsive';
-import { ViewportHooks } from './patterns/ViewportHooks';
 import { ContainerQueries } from './patterns/ContainerQueries';
+import { ControlledResponsive } from './patterns/ControlledResponsive';
 import { Factory } from './patterns/Factory';
 import { SharedState } from './patterns/SharedState';
+import { ViewportHooks } from './patterns/ViewportHooks';
 
 const MIN = 320;
 const MAX = 1440;

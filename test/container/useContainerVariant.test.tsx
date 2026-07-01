@@ -1,9 +1,10 @@
 // @vitest-environment jsdom
-import { afterEach, describe, expect, it, vi } from 'vitest';
-import { useRef } from 'react';
 import { act, cleanup, render, screen } from '@testing-library/react';
+import { useRef } from 'react';
+import { afterEach, describe, expect, it, vi } from 'vitest';
+
 import { useContainerVariant } from '../../src/container/useContainerVariant';
-import { MockResizeObserver, fireResize, resetResizeObservers } from '../helpers';
+import { fireResize, MockResizeObserver, resetResizeObservers } from '../helpers';
 
 function Probe({ ssr, settleMs = 0 }: { ssr?: 'stack' | 'row'; settleMs?: number }) {
   const ref = useRef<HTMLDivElement>(null);

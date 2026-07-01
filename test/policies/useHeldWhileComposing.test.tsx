@@ -1,6 +1,7 @@
 // @vitest-environment jsdom
-import { afterEach, describe, expect, it } from 'vitest';
 import { act, cleanup, render, screen } from '@testing-library/react';
+import { afterEach, describe, expect, it } from 'vitest';
+
 import { useHeldWhileComposing } from '../../src/policies/useHeldWhileComposing';
 
 function Probe({ value, enabled }: { value: string; enabled: boolean }) {

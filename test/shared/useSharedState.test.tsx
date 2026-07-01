@@ -1,6 +1,7 @@
 // @vitest-environment jsdom
-import { afterEach, describe, expect, it, vi } from 'vitest';
 import { cleanup, fireEvent, render, screen } from '@testing-library/react';
+import { afterEach, describe, expect, it, vi } from 'vitest';
+
 import { Responsive } from '../../src/responsive/Responsive';
 import { SharedStateScope } from '../../src/shared/SharedStateScope';
 import { useSharedState } from '../../src/shared/useSharedState';

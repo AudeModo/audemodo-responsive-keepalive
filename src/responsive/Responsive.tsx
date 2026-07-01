@@ -1,8 +1,9 @@
 import type { ReactNode } from 'react';
-import { isActivitySupported } from '../platform/activity';
+
 import { warnOnce } from '../internal/warnOnce';
-import type { ResponsiveProps } from '../types';
+import { isActivitySupported } from '../platform/activity';
 import { SharedStateScope } from '../shared/SharedStateScope';
+import type { ResponsiveProps } from '../types';
 import { KeepAliveVariants } from './KeepAliveVariants';
 import { SwapVariant } from './SwapVariant';
 

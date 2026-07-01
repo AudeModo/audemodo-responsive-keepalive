@@ -1,4 +1,5 @@
 import { Fragment } from 'react';
+
 import type { VariantRenderProps } from '../types';
 import { renderVariant } from './renderVariant';
 

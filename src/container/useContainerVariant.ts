@@ -1,4 +1,5 @@
 import type { RefObject } from 'react';
+
 import { useSettledValue } from '../policies/useSettledValue';
 import type { ContainerVariantOptions } from '../types';
 import { resolveContainerVariant } from './resolveContainerVariant';

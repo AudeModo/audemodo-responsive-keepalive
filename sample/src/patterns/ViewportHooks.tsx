@@ -1,8 +1,9 @@
-import { useState } from 'react';
 import { useMediaVariant, useResponsiveValue } from '@audemodo/responsive-keepalive';
-import { Stage } from '../ui/Stage';
+import { useState } from 'react';
+
 import { Control, Segmented, Toggle } from '../ui/Controls';
 import { Playground } from '../ui/Playground';
+import { Stage } from '../ui/Stage';
 
 const QUERIES = {
   mobile: '(max-width: 767px)',

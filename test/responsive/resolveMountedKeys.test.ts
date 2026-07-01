@@ -1,4 +1,5 @@
 import { describe, expect, it } from 'vitest';
+
 import { resolveMountedKeys } from '../../src/responsive/resolveMountedKeys';
 
 const keys = ['mobile', 'desktop'] as const;

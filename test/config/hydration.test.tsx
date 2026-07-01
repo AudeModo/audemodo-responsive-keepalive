@@ -1,8 +1,9 @@
 // @vitest-environment jsdom
-import { afterEach, describe, expect, it, vi } from 'vitest';
 import { act } from '@testing-library/react';
-import { renderToString } from 'react-dom/server';
 import { hydrateRoot, type Root } from 'react-dom/client';
+import { renderToString } from 'react-dom/server';
+import { afterEach, describe, expect, it, vi } from 'vitest';
+
 import { createResponsive } from '../../src/config/createResponsive';
 import { makeMatchMedia } from '../helpers';
 

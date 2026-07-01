@@ -1,4 +1,5 @@
 import { useRef } from 'react';
+
 import { Activity } from '../platform/activity';
 import type { Mount, VariantRenderProps } from '../types';
 import { renderVariant } from './renderVariant';

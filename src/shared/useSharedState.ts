@@ -1,4 +1,5 @@
 import { useCallback, useContext, useRef, useSyncExternalStore } from 'react';
+
 import { SharedStateContext } from './SharedStateScope';
 
 export type SetSharedState<T> = (next: T | ((prev: T) => T)) => void;

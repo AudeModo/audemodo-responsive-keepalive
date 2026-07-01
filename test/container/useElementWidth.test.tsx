@@ -1,11 +1,12 @@
 // @vitest-environment jsdom
-import { afterEach, describe, expect, it, vi } from 'vitest';
-import { useRef } from 'react';
 import { act, cleanup, render, screen } from '@testing-library/react';
+import { useRef } from 'react';
+import { afterEach, describe, expect, it, vi } from 'vitest';
+
 import { useElementWidth } from '../../src/container/useElementWidth';
 import {
-  MockResizeObserver,
   fireResize,
+  MockResizeObserver,
   resetResizeObservers,
   resizeDisconnectCount,
 } from '../helpers';

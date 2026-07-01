@@ -1,9 +1,11 @@
-import { createContext, useContext, type ReactElement } from 'react';
-import { Responsive as ControlledResponsive } from '../responsive/Responsive';
+import { createContext, type ReactElement, useContext } from 'react';
+
+import { warnOnce } from '../internal/warnOnce';
 import { useMediaVariant } from '../media/useMediaVariant';
 import { useResponsiveValue as baseUseResponsiveValue } from '../media/useResponsiveValue';
 import { Activity, isActivitySupported } from '../platform/activity';
-import { warnOnce } from '../internal/warnOnce';
+import { breakpointsToQueries } from '../query/breakpointsToQueries';
+import { Responsive as ControlledResponsive } from '../responsive/Responsive';
 import { SharedStateScope } from '../shared/SharedStateScope';
 import type {
   ConfiguredResponsive,
@@ -13,7 +15,6 @@ import type {
   ResponsiveProviderProps,
   VariantMap,
 } from '../types';
-import { breakpointsToQueries } from '../query/breakpointsToQueries';
 
 const ACTIVITY_GATE_WARNING =
   '[responsive-keepalive] <Activity> is unavailable; ' +

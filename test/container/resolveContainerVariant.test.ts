@@ -1,4 +1,5 @@
 import { describe, expect, it } from 'vitest';
+
 import { resolveContainerVariant } from '../../src/container/resolveContainerVariant';
 
 const bp = { stack: 0, row: 480, wide: 960 };

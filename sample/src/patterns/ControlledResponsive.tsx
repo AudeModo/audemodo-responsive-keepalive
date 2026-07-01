@@ -1,13 +1,14 @@
-import { useState } from 'react';
 import {
-  Responsive,
   type Mount,
+  Responsive,
   type Strategy,
   type VariantMap,
 } from '@audemodo/responsive-keepalive';
-import { ProbeCard, Stage } from '../ui/Stage';
+import { useState } from 'react';
+
 import { Control, Segmented } from '../ui/Controls';
 import { Playground } from '../ui/Playground';
+import { ProbeCard, Stage } from '../ui/Stage';
 
 type Variant = 'mobile' | 'desktop';
 type Form = 'element' | 'function';

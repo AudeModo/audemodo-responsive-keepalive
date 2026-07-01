@@ -1,4 +1,5 @@
 import { afterEach, describe, expect, it, vi } from 'vitest';
+
 import { resetWarnings, warnOnce } from '../../src/internal/warnOnce';
 
 afterEach(() => {
