@@ -81,4 +81,31 @@ describe('useMediaVariant', () => {
     act(() => document.dispatchEvent(new Event('compositionend')));
     expect(cur()).toBe('mobile');
   });
+
+  it('accepts integer breakpoints, deriving the same mobile-first bands', () => {
+    const { mm, set } = makeMatchMedia();
+    vi.stubGlobal('matchMedia', mm);
+    function Int(opts: { ssr?: 'mobile' | 'desktop' }) {
+      return (
+        <span data-testid="v">
+          {useMediaVariant({ mobile: 0, desktop: 768 }, { ssr: opts.ssr })}
+        </span>
+      );
+    }
+    act(() => set({ '(min-width: 768px)': true }));
+    render(<Int ssr="mobile" />);
+    expect(cur()).toBe('desktop');
+    act(() => set({ '(max-width: 767px)': true }));
+    expect(cur()).toBe('mobile');
+  });
+
+  it('defaults the fallback to the floor variant for integer breakpoints', () => {
+    const { mm } = makeMatchMedia();
+    vi.stubGlobal('matchMedia', mm); // nothing matches, no ssr
+    function Int() {
+      return <span data-testid="v">{useMediaVariant({ mobile: 0, desktop: 768 })}</span>;
+    }
+    render(<Int />);
+    expect(cur()).toBe('mobile'); // floor-first ordering -> 'mobile'
+  });
 });
