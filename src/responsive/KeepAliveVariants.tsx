@@ -8,6 +8,13 @@ interface KeepAliveVariantsProps<K extends string> extends VariantRenderProps<K>
   mount: Mount;
 }
 
+/**
+ * Renders the mounted variants wrapped in `<Activity>`, keeping inactive ones
+ * alive (state preserved) while hidden. Owns the lazy-mount bookkeeping; the
+ * "which keys" decision is delegated to the pure {@link resolveMountedKeys}.
+ *
+ * Only rendered when `<Activity>` is available (see `Responsive`).
+ */
 export function KeepAliveVariants<K extends string>({
   variant,
   variants,
@@ -22,6 +29,7 @@ export function KeepAliveVariants<K extends string>({
   return (
     <>
       {mountedKeys.map((key) => (
+        // Stable key → stable tree position → state preserved across switches.
         <Activity key={key} mode={key === variant ? 'visible' : 'hidden'}>
           {renderVariant(variants[key])}
         </Activity>
