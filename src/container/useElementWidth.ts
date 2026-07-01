@@ -1,5 +1,10 @@
 import { useEffect, useState, type RefObject } from 'react';
 
+/**
+ * Tracks the content-box width of the referenced element via ResizeObserver.
+ * Returns `null` until the first measurement (and on the server, or where
+ * ResizeObserver is unavailable).
+ */
 export function useElementWidth<E extends Element = Element>(
   ref: RefObject<E | null>,
 ): number | null {

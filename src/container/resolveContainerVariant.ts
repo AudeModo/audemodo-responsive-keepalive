@@ -1,3 +1,9 @@
+/**
+ * Pure: given a measured width and a map of variant → minimum width, returns the
+ * variant with the greatest minimum width that does not exceed `width`. If the
+ * width is below every threshold, the variant with the smallest minimum width
+ * (the floor) wins, so a variant is always selected.
+ */
 export function resolveContainerVariant<K extends string>(
   width: number,
   breakpoints: Record<K, number>,
