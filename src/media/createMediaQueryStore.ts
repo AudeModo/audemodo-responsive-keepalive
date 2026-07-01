@@ -4,6 +4,13 @@ export interface MediaQueryStore<K extends string> {
   getServerSnapshot: () => K;
 }
 
+/**
+ * Pure factory (no React) producing a `useSyncExternalStore`-compatible store that
+ * maps a set of media queries to a variant key. The first matching query in object
+ * order wins; otherwise `fallback` is returned. Server/SSR always returns `fallback`.
+ *
+ * Isolating this from React makes the matchMedia logic unit-testable on its own.
+ */
 export function createMediaQueryStore<K extends string>(
   queries: Record<K, string>,
   fallback: K,
