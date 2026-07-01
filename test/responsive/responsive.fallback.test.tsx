@@ -1,9 +1,10 @@
 // @vitest-environment jsdom
-import { afterEach, describe, expect, it, vi } from 'vitest';
-import { useRef, useState } from 'react';
 import { cleanup, fireEvent, render, screen } from '@testing-library/react';
-import { nextIid, resetIid } from '../helpers';
+import { useRef, useState } from 'react';
+import { afterEach, describe, expect, it, vi } from 'vitest';
+
 import { resetWarnings } from '../../src/internal/warnOnce';
+import { nextIid, resetIid } from '../helpers';
 
 vi.mock('../../src/platform/activity', () => ({
   Activity: undefined,

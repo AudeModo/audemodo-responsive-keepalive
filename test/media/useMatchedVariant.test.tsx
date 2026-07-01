@@ -1,7 +1,8 @@
 // @vitest-environment jsdom
-import { afterEach, describe, expect, it, vi } from 'vitest';
-import { useState } from 'react';
 import { cleanup, fireEvent, render, screen } from '@testing-library/react';
+import { useState } from 'react';
+import { afterEach, describe, expect, it, vi } from 'vitest';
+
 import { useMatchedVariant } from '../../src/media/useMatchedVariant';
 
 const D = '(min-width:768px)';

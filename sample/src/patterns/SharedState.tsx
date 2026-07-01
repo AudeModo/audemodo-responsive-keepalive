@@ -1,8 +1,9 @@
-import { useRef, useState } from 'react';
 import { SharedStateScope, useSharedState } from '@audemodo/responsive-keepalive';
-import { Stage } from '../ui/Stage';
+import { useRef, useState } from 'react';
+
 import { Control, Segmented } from '../ui/Controls';
 import { Playground } from '../ui/Playground';
+import { Stage } from '../ui/Stage';
 
 type Mode = 'shared' | 'separate';
 

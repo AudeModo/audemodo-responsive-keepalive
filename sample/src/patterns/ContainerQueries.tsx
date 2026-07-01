@@ -1,8 +1,9 @@
-import { useRef, useState } from 'react';
 import { useContainerVariant } from '@audemodo/responsive-keepalive';
-import { Stage } from '../ui/Stage';
+import { useRef, useState } from 'react';
+
 import { Control, Segmented } from '../ui/Controls';
 import { Playground } from '../ui/Playground';
+import { Stage } from '../ui/Stage';
 
 type CVariant = 'stack' | 'row' | 'wide';
 

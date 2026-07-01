@@ -1,4 +1,5 @@
 import { useRef, useSyncExternalStore } from 'react';
+
 import { createMediaQueryStore, type MediaQueryStore } from './createMediaQueryStore';
 
 /**

@@ -1,7 +1,8 @@
 // @vitest-environment jsdom
-import { afterEach, describe, expect, it } from 'vitest';
-import { useRef, useState } from 'react';
 import { cleanup, fireEvent, render, screen } from '@testing-library/react';
+import { useRef, useState } from 'react';
+import { afterEach, describe, expect, it } from 'vitest';
+
 import { Responsive } from '../../src';
 import { nextIid, resetIid } from '../helpers';
 

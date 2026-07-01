@@ -1,4 +1,4 @@
-import { useEffect, useState, type RefObject } from 'react';
+import { type RefObject, useEffect, useState } from 'react';
 
 /**
  * Tracks the content-box width of the referenced element via ResizeObserver.

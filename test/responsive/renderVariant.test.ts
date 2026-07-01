@@ -1,4 +1,5 @@
 import { describe, expect, it } from 'vitest';
+
 import { renderVariant } from '../../src/responsive/renderVariant';
 
 describe('renderVariant (pure)', () => {

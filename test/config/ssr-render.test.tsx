@@ -1,5 +1,6 @@
-import { describe, expect, it } from 'vitest';
 import { renderToStaticMarkup } from 'react-dom/server';
+import { describe, expect, it } from 'vitest';
+
 import { createResponsive } from '../../src/config/createResponsive';
 import { SharedStateScope } from '../../src/shared/SharedStateScope';
 import { useSharedState } from '../../src/shared/useSharedState';

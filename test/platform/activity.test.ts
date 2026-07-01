@@ -1,4 +1,5 @@
 import { describe, expect, it } from 'vitest';
+
 import { Activity, isActivitySupported } from '../../src/platform/activity';
 
 describe('platform/activity', () => {

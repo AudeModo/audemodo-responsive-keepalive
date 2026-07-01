@@ -11,22 +11,22 @@ export { useMediaVariant } from './media/useMediaVariant';
 export { useResponsiveValue } from './media/useResponsiveValue';
 export { Responsive } from './responsive/Responsive';
 export { SharedStateScope } from './shared/SharedStateScope';
-export { useSharedState, type SetSharedState } from './shared/useSharedState';
+export { type SetSharedState, useSharedState } from './shared/useSharedState';
 
 // Public types
 export type {
-  Strategy,
-  Mount,
-  VariantMap,
-  ResponsiveProps,
-  MediaVariantOptions,
-  ResponsiveValueOptions,
-  ContainerVariantOptions,
   BreakpointConfig,
-  MediaInput,
-  CreateResponsiveOptions,
-  ConfiguredResponsiveProps,
   ConfiguredResponsive,
-  ResponsiveProviderProps,
+  ConfiguredResponsiveProps,
+  ContainerVariantOptions,
+  CreateResponsiveOptions,
   MatchProps,
+  MediaInput,
+  MediaVariantOptions,
+  Mount,
+  ResponsiveProps,
+  ResponsiveProviderProps,
+  ResponsiveValueOptions,
+  Strategy,
+  VariantMap,
 } from './types';

@@ -1,7 +1,7 @@
 import { useSettledValue } from '../policies/useSettledValue';
 import { normalizeQueries } from '../query/normalizeQueries';
-import { useMatchedVariant } from './useMatchedVariant';
 import type { MediaInput, ResponsiveValueOptions } from '../types';
+import { useMatchedVariant } from './useMatchedVariant';
 
 /**
  * Selects a value per breakpoint — the scalar counterpart to `<Responsive>`. Returns

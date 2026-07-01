@@ -1,7 +1,9 @@
-import { createRoot } from 'react-dom/client';
-import { installMatchMedia } from './lib/matchMedia';
-import { App } from './App';
 import './theme.css';
+
+import { createRoot } from 'react-dom/client';
+
+import { App } from './App';
+import { installMatchMedia } from './lib/matchMedia';
 
 // Install the controllable matchMedia shim before the first render so the real
 // library hooks read it. No StrictMode: its dev-only double-mount would muddy the

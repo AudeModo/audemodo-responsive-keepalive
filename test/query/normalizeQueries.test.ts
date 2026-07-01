@@ -1,4 +1,5 @@
 import { describe, expect, it } from 'vitest';
+
 import { normalizeQueries } from '../../src/query/normalizeQueries';
 
 describe('normalizeQueries', () => {

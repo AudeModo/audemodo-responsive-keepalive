@@ -1,4 +1,5 @@
 import { describe, expect, it, vi } from 'vitest';
+
 import { createSharedStore } from '../../src/shared/createSharedStore';
 
 describe('createSharedStore (pure)', () => {

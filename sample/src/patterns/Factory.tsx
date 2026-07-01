@@ -1,16 +1,17 @@
-import { useState } from 'react';
-import {
-  Responsive,
-  Provider,
-  Mobile,
-  Desktop,
-  useVariant,
-  useResponsiveValue,
-} from '../responsive';
 import type { Mount, Strategy } from '@audemodo/responsive-keepalive';
-import { ProbeCard, Stage } from '../ui/Stage';
+import { useState } from 'react';
+
+import {
+  Desktop,
+  Mobile,
+  Provider,
+  Responsive,
+  useResponsiveValue,
+  useVariant,
+} from '../responsive';
 import { Control, Segmented, Toggle } from '../ui/Controls';
 import { Playground } from '../ui/Playground';
+import { ProbeCard, Stage } from '../ui/Stage';
 
 const SETUP = `import { createResponsive } from '@audemodo/responsive-keepalive';
 
