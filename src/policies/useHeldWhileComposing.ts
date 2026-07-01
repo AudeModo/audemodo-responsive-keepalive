@@ -1,5 +1,14 @@
 import { useEffect, useRef, useState } from 'react';
 
+/**
+ * Returns `value`, but while an IME composition is in progress (detected
+ * document-wide via bubbling `compositionstart`/`compositionend`) holds the
+ * previously committed value and applies the latest one on `compositionend`.
+ * No-op, with no listeners attached, when `enabled` is `false`.
+ *
+ * Prevents interrupting Hangul/CJK input mid-syllable when an upstream value
+ * (e.g. a layout variant) changes.
+ */
 export function useHeldWhileComposing<T>(value: T, enabled: boolean): T {
   const [held, setHeld] = useState(value);
   const composingRef = useRef(false);
