@@ -16,8 +16,8 @@ import type {
 import { breakpointsToQueries } from '../query/breakpointsToQueries';
 
 const ACTIVITY_GATE_WARNING =
-  '[responsive-keepalive] <Activity> is unavailable;' +
-  'Match gates fall back to swap (inactive branches unmount and lose state).' +
+  '[responsive-keepalive] <Activity> is unavailable; ' +
+  'Match gates fall back to swap (inactive branches unmount and lose state). ' +
   'Upgrade to React 19.2+ for keep-alive.';
 
 const RESERVED = ['strategy', 'mount', 'ssr', 'settleMs', 'deferWhileComposing'];
